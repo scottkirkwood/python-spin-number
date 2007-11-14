@@ -12,7 +12,7 @@ Python "print" statements work and output to the console, and is useful for debu
 
 If you find some Gimp code on the internet be careful that some functions are deprecated and should be used.  Usually the documentation mentions what *should* be used and it should be obvious how to modify the code to work.
 
-In Python some methods begin with "gimp.", others with "gdb.". You should use "gimp." when possible, but there aren't many functions there, everything else will start with "gdb." which stands for "Gimp Database" and not "Gnu Debugger".
+In Python some methods begin with "gimp.", others with "pdb.". You should use "gimp." when possible, but there aren't many functions there, everything else will start with "pdb." which stands for "Procedure Database".
 
 = Note =
 
