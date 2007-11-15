@@ -1,0 +1,26 @@
+<html>
+<head><title>Testing changenum</title>
+<body>
+<script>
+    var button_imgs = new Array();
+    var current = 0;
+    function loadImages() {
+        for (i = 0; i < 10; i++) {
+            var strname = 'num-' + i + '.gif';
+            button_imgs[i] = new Image();
+            button_imgs[i].src = strname;
+        }
+    } 
+    function nextImage() {
+        current++;
+        if (current > 9) {
+            current = 0;
+        }
+        document['hours'].src = button_imgs[current].src;
+    }
+    loadImages();
+
+</script>
+<img name='hours' src='num-0.gif' alt='hours' onMouseOver='nextImage()'/>
+</body>
+</html>
