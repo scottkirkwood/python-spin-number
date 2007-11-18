@@ -2,25 +2,65 @@
 <head><title>Testing changenum</title>
 <body>
 <script>
-    var button_imgs = new Array();
-    var current = 0;
-    function loadImages() {
-        for (i = 0; i < 10; i++) {
-            var strname = 'num-' + i + '.gif';
-            button_imgs[i] = new Image();
-            button_imgs[i].src = strname;
-        }
-    } 
-    function nextImage() {
-        current++;
-        if (current > 9) {
-            current = 0;
-        }
-        document['hours'].src = button_imgs[current].src;
-    }
-    loadImages();
+  var button_imgs = new Array();
+  var current_digits = new Array();
 
+  function loadImages() {
+    for (pos = 0; pos < 8; pos++) {
+      for (num = 0; num < 10; num++) {
+        var strname = 'num-' + pos + '-' + num + '.gif';
+        button_imgs[pos * 10 + num] = new Image();
+        button_imgs[pos * 10 + num].src = strname;
+        current_digits[num] = 0;
+      }
+    }
+  } 
+
+  function setImage(pos, num) {
+    // Don't update the time unless we have to
+    if (current_digits[pos] == num) {
+      return;
+    }
+    if (num > 9) {
+      return;
+    }
+    current_digits[pos] = num;
+    document['d' + pos].src = button_imgs[pos * 10 + num].src;
+  }
+
+  loadImages();
+
+  start_date = new Date("December 25, 2007");
+  function counter() {
+      today = new Date();
+      offset = start_date.getTime() - today.getTime();
+      //hh = today.getHours();
+      ss = Math.floor(offset / 1000.0);
+      mm = Math.floor(offset / (60 * 1000.0));
+      hh = Math.floor(offset / (60 * 60 * 1000.0));
+      dd = Math.floor(offset / (24 * 60 * 60 * 1000.0));
+      setImage(0, Math.floor(dd / 10.0));
+      setImage(1, Math.floor(dd % 10.0));
+      setImage(2, Math.floor(hh / 10.0));
+      setImage(3, Math.floor(hh % 10.0));
+      setImage(4, Math.floor(mm / 10.0));
+      setImage(5, Math.floor(mm % 10.0));
+      setImage(6, Math.floor(ss / 10.0));
+      setImage(7, Math.floor(ss % 10.0));
+
+      setTimeout('counter()', 500);
+  }
 </script>
-<img name='hours' src='num-0.gif' alt='hours' onMouseOver='nextImage()'/>
+<img name='d0' src='num-0-0.gif' alt='h0'/>
+<img name='d1' src='num-1-0.gif' alt='h1'/> <span>Days</span>
+<img name='d2' src='num-2-0.gif' alt='m0'/>
+<img name='d3' src='num-3-0.gif' alt='m1'/> <span>Hours</span>
+<img name='d4' src='num-4-0.gif' alt='s0'/>
+<img name='d5' src='num-5-0.gif' alt='s1'/> <span>Minutes</span>
+<img name='d6' src='num-6-0.gif' alt='s0'/>
+<img name='d7' src='num-7-0.gif' alt='s1'/> <span>Seconds</span>
+<script>
+  counter();
+</script>
 </body>
 </html>

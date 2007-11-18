@@ -38,17 +38,18 @@ def SpinNumber(height, width, num, fontname, fontsize):
     img.enable_undo()
     gimp.Display(img)
     gimp.displays_flush()
-    fname = "num-%d.gif" % num,
-    # pdb.file_gif_save(
-    #     1, # Interactive mode
-    #     img,
-    #     pdb.gimp_image_get_active_drawable(img),
-    #     fname,
-    #     fname,
-    #     0, # interlace
-    #     1, # loop
-    #     250, # ms
-    #     0)
+    fname = "num-%d.gif" % num
+    # Don't know why this doesn't work
+    #pdb.file_gif_save(
+    #    0,
+    #    img,
+    #    pdb.gimp_image_get_active_drawable(img),
+    #    fname,
+    #    fname,
+    #    0,
+    #    1,
+    #    250,
+    #    0)
 
 def OneLayer(img, width, height, fontname, fontsize, txt, index, y):
     """
@@ -64,7 +65,7 @@ def OneLayer(img, width, height, fontname, fontsize, txt, index, y):
       index: index of frame (ex. 0 or 8)
       y: Y position to draw the text, may be negative
     """
-    layer = gimp.Layer(img, "layer-%d (200ms)" % index, 
+    layer = gimp.Layer(img, "layer-%d (120ms)" % index, 
         width, height, RGB_IMAGE, 100, NORMAL_MODE)
     img.add_layer(layer, 0)
     pdb.gimp_edit_fill(layer, BACKGROUND_FILL)
