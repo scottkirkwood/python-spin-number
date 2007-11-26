@@ -4,9 +4,11 @@
 # and restart gimp
 
 import math
+import os
+import sys
 from gimpfu import *
 
-def SpinNumber(height, width, num, fontname, fontsize):
+def SpinNumber(height, width, num, up, fontname, fontsize):
     """
     Create an image with a number in it, then move it up in separate layers
     (frames) until another number is shown.  This is to give the effect of an
@@ -16,40 +18,52 @@ def SpinNumber(height, width, num, fontname, fontsize):
       height: height of image in pixels
       width: width of image in pixels
       num: which number to show when animation finished (0-9)
+      up: 1 for counting up, 0 for counting down
       fontname: font to use for the numbers
       fontsize: size of the font to use.
     """
     img = gimp.Image(height, width, RGB)
     img.disable_undo()
 
-    prev_num = num - 1
-    if prev_num < 0:
-        prev_num = 9
+    if up:
+        prev_num = num - 1
+        if prev_num < 0:
+            prev_num = 9
+    else:
+        prev_num = num + 1
+        if prev_num > 9:
+            prev_num = 0
     txt = '%d\n%d' % (prev_num, num)
     steps = 8
     (txt_w, txt_h, ascent, descent) = pdb.gimp_text_get_extents_fontname( 
         txt, fontsize, PIXELS, fontname) 
     start_y = (txt_h / 2) - height
     print start_y
+    last_layer = 0
     for index in range(steps):
         y = start_y - index * (float(height) / (steps - 1))
-        OneLayer(img, width, height, fontname, fontsize, txt, index, y)
+        last_layer = OneLayer(img, width, height, fontname, fontsize, txt, index, y)
 
     img.enable_undo()
     gimp.Display(img)
     gimp.displays_flush()
-    fname = "num-%d.gif" % num
-    # Don't know why this doesn't work
-    #pdb.file_gif_save(
-    #    0,
-    #    img,
-    #    pdb.gimp_image_get_active_drawable(img),
-    #    fname,
-    #    fname,
-    #    0,
-    #    1,
-    #    250,
-    #    0)
+    SaveImage(os.path.join(os.getcwd(), 'num-%d.gif' % num), img)
+
+def SaveImage(fname, img):
+    pdb.gimp_image_convert_indexed(
+        img,
+        2, # 2 FSlow bleed dither
+        0, # Make palette
+        255, # with 255 colors
+        0, # Dither transparency
+        1, # Remove unused
+        '')
+    pdb.gimp_file_save(
+        img,
+        img.layers[0],
+        fname,
+        fname)
+    print "Saved to '%s'" % fname
 
 def OneLayer(img, width, height, fontname, fontsize, txt, index, y):
     """
@@ -80,6 +94,36 @@ def OneLayer(img, width, height, fontname, fontsize, txt, index, y):
     # Merge with background
     pdb.gimp_floating_sel_anchor(txtfloat)
 
+    pdb.gimp_edit_blend(layer, 
+        2, # Tranaparent mode
+        2, #BEHIND-MODE,
+        0, #GRADIENT_LINEAR,
+        50, # Transparency
+        0, # Offset,
+        0, # Repeat
+        0, # Reverse
+        0, # Supersample
+        1, # Max super sample depth
+        0, # Super sample threshold
+        1, # Dither
+        width // 2, 0, width // 2, height // 2)
+
+    pdb.gimp_edit_blend(layer, 
+        2, # Tranaparent mode
+        2, #BEHIND-MODE,
+        0, #GRADIENT_LINEAR,
+        50, # Transparency
+        0, # Offset,
+        0, # Repeat
+        0, # Reverse
+        0, # Supersample
+        1, # Max super sample depth
+        0, # Super sample threshold
+        1, # Dither
+        width // 2, height, width // 2, height // 2)
+
+    return layer
+
 register(
         "python_fu_spin_number",
         "Tool to make spinning number",
@@ -93,6 +137,7 @@ register(
                 (PF_INT, "height", "Height", 32),
                 (PF_INT, "width", "Width", 32),
                 (PF_INT, "num", "Number", 1),
+                (PF_INT, "up", "1 for couting up, 0 for counting down", 0),
                 (PF_STRING, "fontname", "Font Name", "FreeSans Bold"),
                 (PF_INT, "fontsize", "Font Size", 32),
         ],
