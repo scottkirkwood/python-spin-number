@@ -38,7 +38,6 @@ def SpinNumber(height, width, num, up, fontname, fontsize):
     (txt_w, txt_h, ascent, descent) = pdb.gimp_text_get_extents_fontname( 
         txt, fontsize, PIXELS, fontname) 
     start_y = (txt_h / 2) - height
-    print start_y
     last_layer = 0
     for index in range(steps):
         y = start_y - index * (float(height) / (steps - 1))
@@ -47,7 +46,10 @@ def SpinNumber(height, width, num, up, fontname, fontsize):
     img.enable_undo()
     gimp.Display(img)
     gimp.displays_flush()
-    SaveImage(os.path.join(os.getcwd(), 'num-%d.gif' % num), img)
+    dir = 'up'
+    if up == 0:
+        dir = 'down'
+    SaveImage(os.path.join(os.getcwd(), 'num-%s-%d.gif' % (dir, num)), img)
 
 def SaveImage(fname, img):
     pdb.gimp_image_convert_indexed(
@@ -64,6 +66,7 @@ def SaveImage(fname, img):
         fname,
         fname)
     print "Saved to '%s'" % fname
+    pdb.gimp_image_clean_all(img)
 
 def OneLayer(img, width, height, fontname, fontsize, txt, index, y):
     """
