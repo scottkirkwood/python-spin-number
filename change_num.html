@@ -8,9 +8,9 @@
   function loadImages() {
     for (pos = 0; pos < 8; pos++) {
       for (num = 0; num < 10; num++) {
-        var strname = 'num-' + pos + '-' + num + '.gif';
+        var strname = 'num-down-' + pos + '-' + num + '.gif';
         button_imgs[pos * 10 + num] = new Image();
-        button_imgs[pos * 10 + num].src = strname;
+        //button_imgs[pos * 10 + num].src = strname;
         current_digits[num] = 0;
       }
     }
@@ -25,7 +25,8 @@
       return;
     }
     current_digits[pos] = num;
-    document['d' + pos].src = button_imgs[pos * 10 + num].src;
+    var strname = 'num-down-' + pos + '-' + num + '.gif';    
+    document['d' + pos].src = strname;
   }
 
   loadImages();
@@ -51,14 +52,14 @@
       setTimeout('counter()', 500);
   }
 </script>
-<img name='d0' src='num-0-0.gif' alt='h0'/>
-<img name='d1' src='num-1-0.gif' alt='h1'/> <span>Days</span>
-<img name='d2' src='num-2-0.gif' alt='m0'/>
-<img name='d3' src='num-3-0.gif' alt='m1'/> <span>Hours</span>
-<img name='d4' src='num-4-0.gif' alt='s0'/>
-<img name='d5' src='num-5-0.gif' alt='s1'/> <span>Minutes</span>
-<img name='d6' src='num-6-0.gif' alt='s0'/>
-<img name='d7' src='num-7-0.gif' alt='s1'/> <span>Seconds</span>
+<img name='d0' src='num-down-0-0.gif' alt='h0'/>
+<img name='d1' src='num-down-1-0.gif' alt='h1'/> <span>Days</span>&nbsp;
+<img name='d2' src='num-down-2-0.gif' alt='m0'/>
+<img name='d3' src='num-down-3-0.gif' alt='m1'/> <span>:</span>
+<img name='d4' src='num-down-4-0.gif' alt='s0'/>
+<img name='d5' src='num-down-5-0.gif' alt='s1'/> <span>:</span>
+<img name='d6' src='num-down-6-0.gif' alt='s0'/>
+<img name='d7' src='num-down-7-0.gif' alt='s1'/> 
 <script>
   counter();
 </script>

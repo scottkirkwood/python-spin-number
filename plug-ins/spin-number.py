@@ -54,19 +54,31 @@ def SpinNumber(height, width, num, up, fontname, fontsize):
 def SaveImage(fname, img):
     pdb.gimp_image_convert_indexed(
         img,
-        2, # 2 FSlow bleed dither
-        0, # Make palette
-        255, # with 255 colors
-        0, # Dither transparency
+        2, # 0 is no dither, 2 FSlow bleed dither
+        0, # 0 is Make palette, 2 Web palette
+        128, # with 255 colors
+        1, # Don't dither transparency
         1, # Remove unused
-        '')
-    pdb.gimp_file_save(
+        '') # name of new palette.
+    pdb.gimp_image_set_filename(img, fname)
+    #pdb.gimp_file_save(
+    #    img,
+    #    img.layers[0],
+    #    fname,
+    #    fname)
+    pdb.gimp_image_clean_all(img)
+    pdb.file_gif_save(
         img,
         img.layers[0],
         fname,
-        fname)
+        fname,
+        0, # not interlaced
+        1, # loop once
+        120, # Default delay
+        1) # combine (save space)
+
+
     print "Saved to '%s'" % fname
-    pdb.gimp_image_clean_all(img)
 
 def OneLayer(img, width, height, fontname, fontsize, txt, index, y):
     """
@@ -140,7 +152,7 @@ register(
                 (PF_INT, "height", "Height", 32),
                 (PF_INT, "width", "Width", 32),
                 (PF_INT, "num", "Number", 1),
-                (PF_INT, "up", "1 for couting up, 0 for counting down", 0),
+                (PF_INT, "up", "1 for counting up, 0 for counting down", 0),
                 (PF_STRING, "fontname", "Font Name", "FreeSans Bold"),
                 (PF_INT, "fontsize", "Font Size", 32),
         ],
