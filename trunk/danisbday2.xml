@@ -1,12 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Module>
   <ModulePrefs 
-    title="Countdown to Danielas Birthday"
+    title="Countdown to Daniela s Birthday"
     author="Scott Kirkwood"
-    title_url="Countdown to Danielas Birthday"
+    title_url="Countdown to Daniela s Birthday"
     description="Not yet a social app"
     height="100"
     author_link="http://code.google.com/p/python-spin-number/">
+    <UserPref 
+        name="magic_year" 
+        display_name="Year" 
+        default_value="2007" />
+    <UserPref 
+        name="magic_month" 
+        display_name="Month" 
+        default_value="11" />
+    <UserPref 
+        name="magic_day" 
+        display_name="Day" 
+        default_value="7" />
+    <UserPref 
+        name="message" 
+        display_name="Message" 
+        default_value="Daniela&apos;s Birthday is in"/> 
     <Require feature="opensocial-0.5"/>
     
   </ModulePrefs>
@@ -76,31 +92,39 @@
       setTimeout('counter()', 500);
   }
 </script>
-<div class="mytitle">Daniela's Birthday is in</div>
+<div class="mytitle">Daniela&apos;s Birthday is in</div>
 <div class="mynumbers">
   <img id='d0'
     src='http://python-spin-number.googlecode.com/svn/trunk/num-down-0-0.gif'
+    width="32" height="32"
     alt='d0'/>
   <img id='d1'
     src='http://python-spin-number.googlecode.com/svn/trunk/num-down-1-0.gif' 
+    width="32" height="32"
     alt='d1'/> <span class="mydays">days</span>&nbsp;
   <img id='d2'
     src='http://python-spin-number.googlecode.com/svn/trunk/num-down-2-0.gif' 
+    width="32" height="32"
     alt='h0'/>
   <img id='d3'
     src='http://python-spin-number.googlecode.com/svn/trunk/num-down-3-0.gif' 
+    width="32" height="32"
     alt='h1'/> <span>:</span>
   <img id='d4'
     src='http://python-spin-number.googlecode.com/svn/trunk/num-down-4-0.gif' 
+    width="32" height="32"
     alt='m0'/>
   <img id='d5'
     src='http://python-spin-number.googlecode.com/svn/trunk/num-down-5-0.gif' 
+    width="32" height="32"
     alt='m1'/> <span>:</span>
   <img id='d6'
     src='http://python-spin-number.googlecode.com/svn/trunk/num-down-6-0.gif' 
+    width="32" height="32"
     alt='s0'/>
   <img id='d7'
     src='http://python-spin-number.googlecode.com/svn/trunk/num-down-7-0.gif' 
+    width="32" height="32"
     alt='s1'/> 
 </div>
 <script>
