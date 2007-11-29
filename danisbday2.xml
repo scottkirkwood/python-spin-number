@@ -17,6 +17,9 @@
     text-align:center; 
     font-size:20pt; 
 }
+.mynumbers { 
+    text-align:center;
+}
 .mydays { 
     vertical-align:super; 
     font-size:15pt; 
@@ -74,30 +77,32 @@
   }
 </script>
 <div class="mytitle">Daniela's Birthday is in</div>
-<img id='d0'
-  src='http://python-spin-number.googlecode.com/svn/trunk/num-down-0-0.gif'
-  alt='d0'/>
-<img id='d1'
-  src='http://python-spin-number.googlecode.com/svn/trunk/num-down-1-0.gif' 
-  alt='d1'/> <span class="mydays">days</span>&nbsp;
-<img id='d2'
-  src='http://python-spin-number.googlecode.com/svn/trunk/num-down-2-0.gif' 
-  alt='h0'/>
-<img id='d3'
-  src='http://python-spin-number.googlecode.com/svn/trunk/num-down-3-0.gif' 
-  alt='h1'/> <span>:</span>
-<img id='d4'
-  src='http://python-spin-number.googlecode.com/svn/trunk/num-down-4-0.gif' 
-  alt='m0'/>
-<img id='d5'
-  src='http://python-spin-number.googlecode.com/svn/trunk/num-down-5-0.gif' 
-  alt='m1'/> <span>:</span>
-<img id='d6'
-  src='http://python-spin-number.googlecode.com/svn/trunk/num-down-6-0.gif' 
-  alt='s0'/>
-<img id='d7'
-  src='http://python-spin-number.googlecode.com/svn/trunk/num-down-7-0.gif' 
-  alt='s1'/> 
+<div class="mynumbers">
+  <img id='d0'
+    src='http://python-spin-number.googlecode.com/svn/trunk/num-down-0-0.gif'
+    alt='d0'/>
+  <img id='d1'
+    src='http://python-spin-number.googlecode.com/svn/trunk/num-down-1-0.gif' 
+    alt='d1'/> <span class="mydays">days</span>&nbsp;
+  <img id='d2'
+    src='http://python-spin-number.googlecode.com/svn/trunk/num-down-2-0.gif' 
+    alt='h0'/>
+  <img id='d3'
+    src='http://python-spin-number.googlecode.com/svn/trunk/num-down-3-0.gif' 
+    alt='h1'/> <span>:</span>
+  <img id='d4'
+    src='http://python-spin-number.googlecode.com/svn/trunk/num-down-4-0.gif' 
+    alt='m0'/>
+  <img id='d5'
+    src='http://python-spin-number.googlecode.com/svn/trunk/num-down-5-0.gif' 
+    alt='m1'/> <span>:</span>
+  <img id='d6'
+    src='http://python-spin-number.googlecode.com/svn/trunk/num-down-6-0.gif' 
+    alt='s0'/>
+  <img id='d7'
+    src='http://python-spin-number.googlecode.com/svn/trunk/num-down-7-0.gif' 
+    alt='s1'/> 
+</div>
 <script>
   counter();
 </script>
