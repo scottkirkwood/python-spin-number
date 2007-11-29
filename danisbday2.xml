@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Module>
   <ModulePrefs 
-    title="Countdown to Daniela&#39;s Birthday"
+    title="Countdown to Danielas Birthday"
     author="Scott Kirkwood"
-    title_url="Countdown to Daniela&#39;s Birthday"
+    title_url="Countdown to Danielas Birthday"
     description="Not yet a social app"
     height="100"
     author_link="http://code.google.com/p/python-spin-number/">
