@@ -5,6 +5,96 @@
   </ModulePrefs>
   <Content type="html">
     <![CDATA[
+<style type="text/css">
+.mytitle { 
+    text-align:center; 
+    font-size:20pt; 
+}
+.mydays { 
+    vertical-align:super; 
+    font-size:15pt; 
+    font-weight:bold;
+}
+</style>
+<script>
+  var button_imgs = new Array();
+  var current_digits = new Array();
+
+  function loadImages() {
+    for (pos = 0; pos < 8; pos++) {
+        current_digits[pos] = -1;
+    }
+  } 
+
+  function setImage(pos, num) {
+    // Dont update the time unless we have to
+    if (current_digits[pos] == num) {
+      return;
+    }
+    if (num > 9) {
+      return;
+    }
+    current_digits[pos] = num;
+    var strname = 'http://python-spin-number.googlecode.com/svn/trunk/num-down-'
+        + pos + '-' + num + '.gif';    
+    document['d' + pos].src = strname;
+  }
+
+  loadImages();
+
+  start_date = new Date();
+  start_date.setFullYear(2007, 11, 7);
+
+  function counter() {
+      today = new Date();
+      offset = start_date.getTime() - today.getTime();
+      dd = Math.floor(offset / (24 * 60 * 60 * 1000.0));
+      offset -= dd * (24 * 60 * 60 * 1000);
+      hh = Math.floor(offset / (60 * 60 * 1000.0));
+      offset -= hh * (60 * 60 * 1000)
+      mm = Math.floor(offset / (60 * 1000.0));
+      offset -= mm * (60 * 1000)
+      ss = Math.floor(offset / 1000.0);
+      setImage(0, Math.floor(dd / 10.0));
+      setImage(1, Math.floor(dd % 10.0));
+      setImage(2, Math.floor(hh / 10.0));
+      setImage(3, Math.floor(hh % 10.0));
+      setImage(4, Math.floor(mm / 10.0));
+      setImage(5, Math.floor(mm % 10.0));
+      setImage(6, Math.floor(ss / 10.0));
+      setImage(7, Math.floor(ss % 10.0));
+      setTimeout('counter()', 500);
+  }
+</script>
+<div class="mytitle">Daniela's Birthday is in</div>
+<img id='d0'
+  src='http://python-spin-number.googlecode.com/svn/trunk/num-down-0-0.gif'
+  alt='d0'/>
+<img id='d1'
+  src='http://python-spin-number.googlecode.com/svn/trunk/num-down-1-0.gif' 
+  alt='d1'/> <span class="mydays">days</span>&nbsp;
+<img id='d2'
+  src='http://python-spin-number.googlecode.com/svn/trunk/num-down-2-0.gif' 
+  alt='h0'/>
+<img id='d3'
+  src='http://python-spin-number.googlecode.com/svn/trunk/num-down-3-0.gif' 
+  alt='h1'/> <span>:</span>
+<img id='d4'
+  src='http://python-spin-number.googlecode.com/svn/trunk/num-down-4-0.gif' 
+  alt='m0'/>
+<img id='d5'
+  src='http://python-spin-number.googlecode.com/svn/trunk/num-down-5-0.gif' 
+  alt='m1'/> <span>:</span>
+<img id='d6'
+  src='http://python-spin-number.googlecode.com/svn/trunk/num-down-6-0.gif' 
+  alt='s0'/>
+<img id='d7'
+  src='http://python-spin-number.googlecode.com/svn/trunk/num-down-7-0.gif' 
+  alt='s1'/> 
+<script>
+  counter();
+</script>
+
     ]]>
   </Content>
 </Module>
