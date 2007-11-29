@@ -5,7 +5,7 @@
     author="Scott Kirkwood"
     title_url="Countdown to Daniela&#39;s Birthday"
     description="Not yet a social app"
-    height="50"
+    height="100"
     author_link="http://code.google.com/p/python-spin-number/">
     <Require feature="opensocial-0.5"/>
     
