@@ -1,5 +1,16 @@
 <html>
 <head><title>Testing changenum</title>
+<style type="text/css">
+.mytitle { 
+    text-align:center; 
+    font-size:20pt; 
+}
+.mydays { 
+    vertical-align:super; 
+    font-size:15pt; 
+    font-weight:bold;
+}
+</style>
 <body>
 <script>
   var button_imgs = new Array();
@@ -7,12 +18,7 @@
 
   function loadImages() {
     for (pos = 0; pos < 8; pos++) {
-      for (num = 0; num < 10; num++) {
-        var strname = 'num-down-' + pos + '-' + num + '.gif';
-        button_imgs[pos * 10 + num] = new Image();
-        //button_imgs[pos * 10 + num].src = strname;
-        current_digits[num] = 0;
-      }
+        current_digits[pos] = -1;
     }
   } 
 
@@ -31,15 +37,19 @@
 
   loadImages();
 
-  start_date = new Date("December 25, 2007");
+  start_date = new Date();
+  start_date.setFullYear(2007, 11, 7);
+
   function counter() {
       today = new Date();
       offset = start_date.getTime() - today.getTime();
-      //hh = today.getHours();
-      ss = Math.floor(offset / 1000.0);
-      mm = Math.floor(offset / (60 * 1000.0));
-      hh = Math.floor(offset / (60 * 60 * 1000.0));
       dd = Math.floor(offset / (24 * 60 * 60 * 1000.0));
+      offset -= dd * (24 * 60 * 60 * 1000);
+      hh = Math.floor(offset / (60 * 60 * 1000.0));
+      offset -= hh * (60 * 60 * 1000)
+      mm = Math.floor(offset / (60 * 1000.0));
+      offset -= mm * (60 * 1000)
+      ss = Math.floor(offset / 1000.0);
       setImage(0, Math.floor(dd / 10.0));
       setImage(1, Math.floor(dd % 10.0));
       setImage(2, Math.floor(hh / 10.0));
@@ -48,18 +58,18 @@
       setImage(5, Math.floor(mm % 10.0));
       setImage(6, Math.floor(ss / 10.0));
       setImage(7, Math.floor(ss % 10.0));
-
       setTimeout('counter()', 500);
   }
 </script>
-<img name='d0' src='num-down-0-0.gif' alt='h0'/>
-<img name='d1' src='num-down-1-0.gif' alt='h1'/> <span>Days</span>&nbsp;
-<img name='d2' src='num-down-2-0.gif' alt='m0'/>
-<img name='d3' src='num-down-3-0.gif' alt='m1'/> <span>:</span>
-<img name='d4' src='num-down-4-0.gif' alt='s0'/>
-<img name='d5' src='num-down-5-0.gif' alt='s1'/> <span>:</span>
-<img name='d6' src='num-down-6-0.gif' alt='s0'/>
-<img name='d7' src='num-down-7-0.gif' alt='s1'/> 
+<div class="mytitle">Daniela's Birthday is in</div>
+<img id='d0' src='num-down-0-0.gif' alt='d0'/>
+<img id='d1' src='num-down-1-0.gif' alt='d1'/> <span class="mydays">days</span>&nbsp;
+<img id='d2' src='num-down-2-0.gif' alt='h0'/>
+<img id='d3' src='num-down-3-0.gif' alt='h1'/> <span>:</span>
+<img id='d4' src='num-down-4-0.gif' alt='m0'/>
+<img id='d5' src='num-down-5-0.gif' alt='m1'/> <span>:</span>
+<img id='d6' src='num-down-6-0.gif' alt='s0'/>
+<img id='d7' src='num-down-7-0.gif' alt='s1'/> 
 <script>
   counter();
 </script>
