@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Module>
   <ModulePrefs 
-    title="Countdown to Danielas Birthday"
+    title="Countdown to Daniela&#39;s Birthday"
     author="Scott Kirkwood"
-    title_url="Countdown to Danielas Birthday"
+    title_url="Countdown to Daniela&#39;s Birthday"
     description="Not yet a social app"
-    height="200"
+    height="50"
     author_link="http://code.google.com/p/python-spin-number/">
     <Require feature="opensocial-0.5"/>
     
