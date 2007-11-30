@@ -73,7 +73,7 @@
   start_date.setFullYear(prefs.getInt("magic_year"),
       prefs.getInt("magic_month"), 
       prefs.getInt("magic_day"));
-  document.getElementById('title-text').innerHTML = prefs.getString("message");
+  document.getElementById('title_text').innerHTML = prefs.getString("message");
 
   function counter() {
       today = new Date();
@@ -96,7 +96,7 @@
       setTimeout('counter()', 500);
   }
 </script>
-<div id="title-text" class="mytitle">Daniela&apos;s Birthday is in</div>
+<div id="title_text" class="mytitle">Daniela&apos;s Birthday is in</div>
 <div class="mynumbers">
   <img id='d0'
     src='http://python-spin-number.googlecode.com/svn/trunk/num-down-0-0.gif'
