@@ -63,7 +63,7 @@
     current_digits[pos] = num;
     var strname = 'http://python-spin-number.googlecode.com/svn/trunk/num-down-'
         + pos + '-' + num + '.gif';
-    document['d' + pos].src = strname;
+    document.getElementById('d' + pos).src = strname;
   }
 
   loadImages();
@@ -72,7 +72,8 @@
   start_date.setFullYear(prefs.getInt("magic_year"),
       prefs.getInt("magic_month"), 
       prefs.getInt("magic_day"));
-  document['title-text'].innerHtml = prefs.getString("message");
+  document.getElementById('title-text').innerHTML = prefs.getString("message");
+
   function counter() {
       today = new Date();
       offset = start_date.getTime() - today.getTime();
