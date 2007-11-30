@@ -12,22 +12,18 @@
   <UserPref 
       name="magic_year" 
       display_name="Year" 
-      datatype="hidden"
       default_value="2007" />
   <UserPref 
       name="magic_month" 
       display_name="Month" 
-      datatype="hidden"
       default_value="11" />
   <UserPref 
       name="magic_day" 
       display_name="Day" 
-      datatype="hidden"
       default_value="7" />
   <UserPref 
       name="message" 
       display_name="Message" 
-      datatype="hidden"
       default_value="Daniela&apos;s Birthday is in"/> 
   <Content type="html">
     <![CDATA[
@@ -76,7 +72,7 @@
   start_date.setFullYear(prefs.getInt("magic_year"),
       prefs.getInt("magic_month"), 
       prefs.getInt("magic_day"));
-
+  document['title-text'].innerHtml = prefs.getString("message");
   function counter() {
       today = new Date();
       offset = start_date.getTime() - today.getTime();
@@ -98,7 +94,7 @@
       setTimeout('counter()', 500);
   }
 </script>
-<div class="mytitle">Daniela&apos;s Birthday is in</div>
+<div id="title-text" class="mytitle">Daniela&apos;s Birthday is in</div>
 <div class="mynumbers">
   <img id='d0'
     src='http://python-spin-number.googlecode.com/svn/trunk/num-down-0-0.gif'
