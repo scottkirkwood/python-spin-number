@@ -6,26 +6,24 @@
     title_url="Countdown to Daniela s Birthday"
     description="Not yet a social app"
     height="100"
-    author_link="http://code.google.com/p/python-spin-number/">
-    <UserPref 
-        name="magic_year" 
-        display_name="Year" 
-        default_value="2007" />
-    <UserPref 
-        name="magic_month" 
-        display_name="Month" 
-        default_value="11" />
-    <UserPref 
-        name="magic_day" 
-        display_name="Day" 
-        default_value="7" />
-    <UserPref 
-        name="message" 
-        display_name="Message" 
-        default_value="Daniela&apos;s Birthday is in"/> 
-    <Require feature="opensocial-0.5"/>
-    
-  </ModulePrefs>
+    author_link="http://code.google.com/p/python-spin-number/"/>
+  <UserPref 
+      name="magic_year" 
+      display_name="Year" 
+      default_value="2007" />
+  <UserPref 
+      name="magic_month" 
+      display_name="Month" 
+      default_value="11" />
+  <UserPref 
+      name="magic_day" 
+      display_name="Day" 
+      default_value="7" />
+  <UserPref 
+      name="message" 
+      display_name="Message" 
+      default_value="Daniela&apos;s Birthday is in"/> 
+  <Require feature="opensocial-0.5"/>
   <Content type="html">
     <![CDATA[
 <style type="text/css">
