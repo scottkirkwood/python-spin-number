@@ -7,7 +7,8 @@
     description="Not yet a social app"
     height="100"
     author_link="http://code.google.com/p/python-spin-number/">
-    <Require feature="opensocial-0.5"/>
+    <Require feature="opensocial-0.5" />
+    <Require feature="setprefs" /> 
   </ModulePrefs>
   <UserPref 
       name="magic_year" 
